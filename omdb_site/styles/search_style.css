@@ -1,0 +1,167 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(45deg, black, #0f0f2b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    max-width: 500px;
+    margin: 0 auto;
+    backdrop-filter: blur(10px);
+}
+
+.search-label {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.button-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#search-form {
+    position: relative;
+    transition: all 0.5s ease;
+    width: 60px;
+    height: 60px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 3px solid white;
+    padding: 5px;
+}
+
+#search-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 50px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    font-size: 1.1em;
+    border-radius: 8px;
+    padding: 0 20px;
+    background: transparent;
+    transition: all 0.5s ease;
+}
+
+.fa-search {
+    box-sizing: border-box;
+    padding: 12px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 6px;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.4em;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+/* Quando il form è in focus o hover */
+#search-form:focus-within,
+#search-form:hover {
+    width: 300px;
+    cursor: pointer;
+}
+
+#search-form:focus-within #search-input,
+#search-form:hover #search-input {
+    width: calc(100% - 50px);
+}
+
+#search-form:focus-within .fa-search,
+#search-form:hover .fa-search {
+    background: #07051a;
+    color: white;
+}
+
+/* Container per i pulsanti */
+.buttons-container {
+    display: none;
+    width: 100%;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Pulsante Clear */
+.clear-btn {
+    font-size: 16px;
+    color: white;
+    padding: 10px 20px;
+    background: rgba(255, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    flex: 1;
+    max-width: 140px;
+}
+
+.clear-btn:hover {
+    background: rgba(255, 0, 0, 0.5);
+}
+
+/* Pulsante Cerca */
+.search-btn {
+    font-size: 16px;
+    color: white;
+    padding: 10px 20px;
+    background: rgba(0, 255, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    flex: 1;
+    max-width: 140px;
+}
+
+.search-btn:hover {
+    background: rgba(0, 255, 0, 0.5);
+}
+
+/* Mostra i pulsanti quando c'è testo */
+#search-form:has(#search-input:not(:placeholder-shown)) {
+    width: 300px;
+}
+
+#search-form:has(#search-input:not(:placeholder-shown)) #search-input {
+    width: calc(100% - 50px);
+}
+
+#search-form:has(#search-input:not(:placeholder-shown)) .fa-search {
+    background: #07051a;
+    color: white;
+}
+
+#search-form:has(#search-input:not(:placeholder-shown)) ~ .buttons-container {
+    display: flex;
+}

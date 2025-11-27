@@ -1,0 +1,314 @@
+/* SEZIONE RISULTATI FILM */
+.results-section {
+    display: none;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.results-title {
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Contenitore con scroll */
+.results-scroll-container {
+    max-height: 800px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* Griglia 4x4 */
+.movies-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Card del film */
+.movie-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.movie-poster {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.movie-title {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+    line-height: 1.3;
+}
+
+.movie-year {
+    color: #ccc;
+    font-size: 14px;
+}
+
+.no-poster {
+    width: 100%;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* Messaggio nessun risultato */
+.no-results {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    padding: 40px;
+}
+
+/* PAGINAZIONE */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.page-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.page-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 8px;
+}
+
+.page-number {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-number:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.page-number.active {
+    background: rgba(0, 255, 0, 0.3);
+    border-color: rgba(0, 255, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .movies-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .movies-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .results-section {
+        margin: 20px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .movies-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .pagination {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* FILTRI DATA */
+.filters-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filter-label {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}
+
+.year-input {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-align: center;
+    width: 100px;
+}
+
+.year-input::placeholder {
+    color: #ccc;
+}
+
+.year-input:focus {
+    outline: none;
+    border-color: rgba(0, 255, 0, 0.5);
+}
+
+.filter-btn {
+    background: rgba(0, 255, 0, 0.3);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 18px;
+}
+
+.filter-btn:hover {
+    background: rgba(0, 255, 0, 0.5);
+}
+
+.clear-filter-btn {
+    background: rgba(255, 0, 0, 0.3);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 18px;
+}
+
+.clear-filter-btn:hover {
+    background: rgba(255, 0, 0, 0.5);
+}
+
+.active-filter {
+    border: 2px solid rgba(0, 255, 0, 0.6) !important;
+    background: rgba(0, 255, 0, 0.2) !important;
+}
+/* Griglia adattiva */
+.movies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Griglia adattiva */
+.movies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Layout speciali per pochi film */
+.movies-container.single-item {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.movies-container.double-items {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.movies-container.triple-items {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
+    margin: 0 auto;
+}
+/* Aggiungi al tuo movies_style.css */
+.sort-select {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+.sort-select option {
+    background: #1a1a1a;
+    color: white;
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: rgba(0, 255, 0, 0.5);
+}

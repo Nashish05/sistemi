@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerca Film</title>
+    <link rel="stylesheet" href="styles/omdb_style.css">
+    <link rel="stylesheet" href="styles/search_style.css">
+    <link rel="stylesheet" href="styles/movies_style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+<body>
+    <div class="search-section">
+        <label for="search-input" class="search-label">Cerca il tuo film preferito</label>
+        <div class="button-wrapper">
+            <form action="#" id="search-form">
+                <input type="search" id="search-input" autofocus required placeholder="Cerca film...">
+                <i class="fa fa-search"></i>
+            </form>
+            <div class="buttons-container">
+                <button type="button" onclick="clearInput()" class="clear-btn">Pulisci</button>
+                <button type="button" onclick="searchInput()" class="search-btn">Cerca</button>
+            </div>
+        </div>
+        
+        <!-- FILTRI DATA -->
+        <div class="filters-container">
+            <div class="filter-group">
+                <label for="year-from" class="filter-label">Anno da:</label>
+                <input type="number" id="year-from" min="1900" max="2024" placeholder="1990" class="year-input">
+            </div>
+            <div class="filter-group">
+                <label for="year-to" class="filter-label">Anno a:</label>
+                <input type="number" id="year-to" min="1900" max="2024" placeholder="2024" class="year-input">
+            </div>
+            <button type="button" onclick="applyYearFilter()" class="filter-btn">Applica Filtro</button>
+            <button type="button" onclick="clearYearFilter()" class="clear-filter-btn">Rimuovi Filtro</button>
+        </div>
+    </div>
+
+    <!-- SEZIONE RISULTATI FILM -->
+    <div id="results-section" class="results-section">
+        <h2 id="results-title" class="results-title">Risultati della ricerca</h2>
+        
+        <!-- CONTENITORE CON SCROLL -->
+        <div id="results-scroll-container" class="results-scroll-container">
+            <div id="movies-container" class="movies-container"></div>
+        </div>
+        
+        <div id="no-results" class="no-results" style="display: none;">
+            <p>Nessun film trovato. Prova con un altro titolo!</p>
+        </div>
+        
+        <!-- PAGINAZIONE -->
+        <div id="pagination" class="pagination" style="display: none;">
+            <button id="prev-btn" class="page-btn">‹ Precedente</button>
+            <div id="page-numbers" class="page-numbers"></div>
+            <button id="next-btn" class="page-btn">Successiva ›</button>
+        </div>
+    </div>
+
+    <script>
+
+        const ApiKey = "24781f09";
+    </script>
+    <script src="jsFiles/omdbSearch.js"></script>
+</body>
+</html>
